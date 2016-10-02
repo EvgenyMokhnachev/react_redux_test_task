@@ -1,0 +1,19 @@
+.filterField {
+  width: 50%;
+  display: inline-block;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.filterInput {
+  box-sizing: border-box;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  outline: none;
+  border-bottom: 1px solid #99c8ff;
+}
+
+.filterInput:focus {
+  border-bottom: 1px solid #4a8fff;
+}

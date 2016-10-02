@@ -1,0 +1,18 @@
+.ContactItem {
+  margin: 10px 0;
+  padding: 10px;
+  background: #f0f0f0;
+}
+.ContactItem:nth-child(even) {
+  background: #f5f5f5;
+}
+
+
+.ContactColumn {
+  display: inline-block;
+  width: 50%;
+}
+
+.hide {
+  display: none;
+}
