@@ -10,18 +10,25 @@ import {
 } from '../constants';
 
 export default function (contacts = [], action) {
+
+  const comparator = (a,b) =>{
+    const nameA = a.name.toLowerCase(),
+      nameB = b.name.toLowerCase();
+    return nameA > nameB ? 1 : nameA < nameB ? -1 : 0;
+  };
+
   switch (action.type) {
+
     case CONTACTS_LOADED: {
-      return action.data.list;
+      return action.data.list.sort(comparator);
     }
 
     case CONTACT_CREATING: {
       return contacts;
     }
     case CONTACT_CREATED: {
-      let resultContact = action.data.contact;
-      contacts.push(resultContact);
-      return contacts.map((contact)=> contact);
+      contacts.push(action.data.contact);
+      return contacts.sort(comparator);
     }
 
     case CONTACT_REMOVED: {
