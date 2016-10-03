@@ -2,10 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { loadContacts, changeFilter } from '../../actions';
+import {
+  loadContacts,
+  changeFilter,
+  createContact,
+  removeContact
+} from '../../actions';
 
 import Filters from '../../components/Filters';
 import Contacts from '../../components/Contacts';
+import ContactForm from '../../components/ContactForm';
 
 import styles from './styles.css';
 
@@ -16,7 +22,6 @@ export class App extends React.Component {
   }
 
   _changeFilter(value){
-    console.log(value);
     this.props.changeFilter(value);
   }
 
@@ -33,11 +38,21 @@ export class App extends React.Component {
     return !result;
   }
 
+  _onSubmitContactForm(event){
+    event.preventDefault();
+    this.props.createContact(event.currentTarget.name.value, event.currentTarget.phone.value);
+  }
+
+  _removeContact(contact){
+    this.props.removeContact(contact);
+  }
+
   render(){
     return (
       <div className={styles.contactsApp}>
         <Filters onChange={this._changeFilter.bind(this)}/>
-        <Contacts filter={this._filter.bind(this)} contacts={this.props.contacts} />
+        <ContactForm errors={this.props.contactForm} onSubmit={this._onSubmitContactForm.bind(this)}/>
+        <Contacts onRemoveContact={this._removeContact.bind(this)} filter={this._filter.bind(this)} contacts={this.props.contacts} />
       </div>
     );
   }
@@ -46,5 +61,5 @@ export class App extends React.Component {
 
 export default connect(
   (state) => { return state },
-  (dispatch) => bindActionCreators({loadContacts, changeFilter}, dispatch)
+  (dispatch) => bindActionCreators({loadContacts, changeFilter, createContact, removeContact}, dispatch)
 )(App);

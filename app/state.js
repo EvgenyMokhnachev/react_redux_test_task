@@ -11,6 +11,9 @@ const store = createStoreWithMiddleware(reducer, {
   filter: {
     phone: '',
     name: ''
+  },
+  contactForm: {
+    errors: {}
   }
 });
 

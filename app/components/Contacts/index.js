@@ -6,7 +6,7 @@ function Contacts(props) {
   return (
     <div>
       {props.contacts.map((contact, key)=>
-        <Contact key={key} contact={contact} filter={props.filter}/>
+        <Contact onRemove={props.onRemoveContact} key={key} contact={contact} filter={props.filter}/>
       )}
     </div>
   );
@@ -15,7 +15,8 @@ function Contacts(props) {
 
 Contacts.propTypes = {
   contacts: React.PropTypes.array.isRequired,
-  filter: React.PropTypes.func.isRequired
+  filter: React.PropTypes.func.isRequired,
+  onRemoveContact: React.PropTypes.func.isRequired
 };
 
 export default Contacts;

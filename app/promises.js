@@ -13,8 +13,22 @@ const middleware = store => next => action => {
 
   action.promise
     .then(
-      (data) => store.dispatch({type: success, data: data}),
-      (error => store.dispatch({type: failure, error: error}))
+      (data) => {
+        if(data) {
+          if(data.data.status) {
+            return store.dispatch({type: success, data: data.data})
+          } else {
+            return store.dispatch({type: failure, errors: data.data.errors})
+          }
+        }
+      },
+      (error) => {
+        if(error) return store.dispatch({type: failure, error: error})
+      }
+    ).catch(
+      (error)=>{
+        if(error) return store.dispatch({type: failure, error: error})
+      }
     );
 };
 

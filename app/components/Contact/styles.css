@@ -10,9 +10,22 @@
 
 .ContactColumn {
   display: inline-block;
-  width: 50%;
+  width: calc(50% - 50px);
 }
 
 .hide {
   display: none;
+}
+
+.RemoveContactBtn {
+  cursor: pointer;
+  outline: none;
+  width: 100px;
+  background: #99c8ff;
+  border: none;
+  padding: 10px;
+}
+
+.RemoveContactBtn:active {
+  background: #4a8fff;
 }

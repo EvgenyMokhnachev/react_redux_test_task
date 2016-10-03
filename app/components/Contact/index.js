@@ -8,10 +8,15 @@ function Contact(props) {
     contactItemClasses += ' ' + styles.hide;
   })();
 
+  function _onRemove() {
+    props.onRemove(props.contact);
+  }
+
   return (
     <div className={contactItemClasses}>
       <div className={styles.ContactColumn}>{props.contact.name}</div>
       <div className={styles.ContactColumn}>{props.contact.phone}</div>
+      <input onClick={_onRemove} className={styles.RemoveContactBtn} value="Remove" type="button"/>
     </div>
   );
 
@@ -19,7 +24,8 @@ function Contact(props) {
 
 Contact.propTypes = {
   contact: React.PropTypes.object.isRequired,
-  filter: React.PropTypes.func.isRequired
+  filter: React.PropTypes.func.isRequired,
+  onRemove: React.PropTypes.func.isRequired
 };
 
 export default Contact;

@@ -1,0 +1,46 @@
+.ContactForm {
+  width: 100%;
+}
+
+.ContactFormInputBlock {
+  display: inline-block;
+  width: calc(50% - 50px);
+  padding: 10px;
+  box-sizing: border-box;
+}
+.ContactFormInput {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box;
+  outline: none;
+  border-bottom: 1px solid #99c8ff;
+}
+
+.ContactFormInput:focus {
+  border-bottom: 1px solid #4a8fff;
+}
+
+.ContactFormSubmitBtnBlock {
+  display: inline-block;
+  width: 100px;
+  box-sizing: border-box;
+}
+
+.ContactFormSubmitBtn {
+  cursor: pointer;
+  background: #99c8ff;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.ContactFormSubmitBtn:active {
+  background: #4a8fff;
+}
+
+.ContactFormInputError {
+  background: #ffe8e0;
+}

@@ -1,20 +1,21 @@
 import {
   CONTACT_CREATE_FAILURE,
-  CONTACT_CREATED
+  CONTACT_CREATED,
+  CONTACT_REMOVE_FAILURE
 } from '../constants';
 
-export default function (contactFormErrors = {}, action) {
+export default function (contactForm = {}, action) {
   switch (action.type) {
 
     case CONTACT_CREATE_FAILURE: {
-      return contactFormErrors = action.errors;
+      return contactForm.errors = action.errors;
     }
 
     case CONTACT_CREATED: {
-      return {}
+      return contactForm.errors = {};
     }
 
     default:
-      return contactFormErrors;
+      return contactForm;
   }
 }
